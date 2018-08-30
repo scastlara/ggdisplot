@@ -1,7 +1,7 @@
 library(ggplot2)
 library(cowplot)
 
-ggdisplot <- function(df, var1, var2, color, title) {
+ggdisplot <- function(df, var1, var2, color) {
 	p1 <- ggplot(df, aes_string(x=var1, y=var2, color=color)) + 
 		  geom_point() + 
 		  theme_light() + 
