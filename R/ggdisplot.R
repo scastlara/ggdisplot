@@ -27,13 +27,21 @@ ggdisplot <- function(df, var1, var2, color, xlim=NULL, ylim=NULL, xlab=NULL, yl
 	ds_top <- ggplot(df, aes_string(x=var1, fill=color)) + 
 		  geom_density(alpha=0.6, color="transparent") + 
 		  theme_light() + 
-		  xlab("");
+		  xlab("") +
+	    theme(axis.line.x = element_blank(),
+	          axis.text.x = element_blank(),
+	          axis.title.x = element_blank(),
+	          axis.ticks.x = element_blank());
 	ds_bottom <- ggplot(df, aes_string(x=var2, fill=color)) + 
 		  geom_density(alpha=0.6, color="transparent") + 
 		  theme_light() + 
 		  coord_flip() + 
 		  theme(legend.position="none") + 
-		  xlab("");
+		  xlab("") + 
+	  theme(axis.line.y = element_blank(),
+	        axis.text.y = element_blank(),
+	        axis.title.y = element_blank(),
+	        axis.ticks.y = element_blank());
 	legend <- get_legend(ds_top)
 	ds_top <- ds_top + theme(legend.position="none");
 
