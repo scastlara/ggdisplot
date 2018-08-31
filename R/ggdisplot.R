@@ -17,7 +17,7 @@
 #' ggdisplot(iris, "Sepal.Length", "Sepal.Width", "Species", theme_bw())
 
 
-ggdisplot <- function(df, var1, var2, color, xlim=NULL, ylim=NULL, xlab=NULL, ylab=NULL, ...) {
+ggdisplot <- function(df, var1, var2, color, xlim=NULL, ylim=NULL, xlab=NULL, ylab=NULL, relative_space = 0.2, ...) {
 	library(ggplot2)
 	library(cowplot)
 	scatt <- ggplot(df, aes_string(x=var1, y=var2, color=color)) + 
@@ -61,7 +61,15 @@ ggdisplot <- function(df, var1, var2, color, xlim=NULL, ylim=NULL, xlab=NULL, yl
 		ds_top    <- ds_top + var;
 		ds_bottom <- ds_bottom + var;
 	}
-	displot <- plot_grid(ds_top, legend, scatt, ds_bottom, ncol=2)
+	displot <- plot_grid(ds_top,
+	                     legend,
+	                     scatt,
+	                     ds_bottom,
+	                     ncol=2,
+	                     axis = "left",
+	                     align = "hv",
+	                     rel_widths = c(1-relative_space,relative_space),
+	                     rel_heights = c(relative_space,1-relative_space))
 	return(displot)
 }
 
