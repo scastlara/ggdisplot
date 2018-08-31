@@ -1,0 +1,11 @@
+Package: ggdisplot
+Title: Scatter plot with density plots.
+Version: 1.0.0
+Description: Useful plot for comparing how groups of samples
+             are distributed based on two variables.
+License: FPL (>=2)
+URL: https://github.com/scastlara/ggdisplot
+Import:
+    ggplot2,
+    cowplot
+RoxygenNote: 6.1.0
